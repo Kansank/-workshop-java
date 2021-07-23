@@ -32,12 +32,13 @@ public class MyRange {
     public String getResult() {
         int startNumber = getStart();
         int endNumber = getEnd();
+        int lastIndex = endNumber + (endNumber-1);
         String result = "";
         // TODO
         for(int i = startNumber ; i<= endNumber; i++){
-            result += String.valueOf(i);
-            if(i != endNumber) result += ",";
+            result += String.valueOf(i) + ",";
+            //if(i != endNumber) result += ",";
         }
-        return result;
+        return result.substring(0,lastIndex);
     }
 }
