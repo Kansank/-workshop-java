@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HelloTest {
-    // f(name) = "Hello somkiat"
+    // f(name) = "Hello kansank"
     @Test
     @DisplayName("ทำการทดสอบ .....")
     public void case01() {
