@@ -10,10 +10,10 @@ class HelloTest {
     public void case01() {
         // Arrange
         Hello hello = new Hello();
-        String name = "somkiat";
+        String name = "kansank";
         // Act
         String actualResult = hello.sawadee(name);
         // Assert
-        assertEquals("Hello somkiat", actualResult);
+        assertEquals("Hello kansank", actualResult);
     }
 }
