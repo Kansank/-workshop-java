@@ -32,7 +32,8 @@ public class MyRange {
     public String getResult() {
         int startNumber = getStart();
         int endNumber = getEnd();
-        int lastIndex = endNumber + (endNumber-1);
+        int amountOfPad = endNumber-1;
+        int lastIndex = endNumber + amountOfPad;
         String result = "";
         // TODO
         for(int i = startNumber ; i<= endNumber; i++){
