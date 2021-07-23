@@ -32,7 +32,12 @@ public class MyRange {
     public String getResult() {
         int startNumber = getStart();
         int endNumber = getEnd();
+        String result = "";
         // TODO
-        return "1,2,3,4,5";
+        for(int i = startNumber ; i<= endNumber; i++){
+            result += String.valueOf(i);
+            if(i != endNumber) result += ",";
+        }
+        return result;
     }
 }
