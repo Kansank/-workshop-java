@@ -21,9 +21,23 @@ public class TennisGame1 {
 
     public String getScore() {
         String[] scoreResults = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
-        // All
-        if (isAll()) {
-            return scoreResults[m_score1] + "-" + "All";
+
+        int diffScore = m_score1 - m_score2;
+
+        // Win
+        if (isWin(diffScore)) {
+            StringBuilder score = new StringBuilder();
+            if (diffScore >= 2) score = new StringBuilder("Win for ").append(this.player1Name);
+            else score = new StringBuilder("Win for ").append(this.player2Name);
+            return score.toString();
+        }
+
+        // Advantage
+        if (isAdvantage(diffScore)) {
+            StringBuilder score = new StringBuilder();
+            if (diffScore == 1) score = new StringBuilder("Advantage ").append(this.player1Name);
+            else if (diffScore == -1) score = new StringBuilder("Advantage ").append(this.player2Name);
+            return score.toString();
         }
 
         // Deuce
@@ -32,22 +46,19 @@ public class TennisGame1 {
             return "Deuce";
         }
 
-        // ???? Advantage and Win ????
-        if (isAdvantageAndWin()) {
-            StringBuilder score = new StringBuilder();
-            int minusResult = m_score1 - m_score2;
-            if (minusResult == 1) score = new StringBuilder("Advantage ").append(this.player1Name);
-            else if (minusResult == -1) score = new StringBuilder("Advantage ").append(this.player2Name);
-            else if (minusResult >= 2) score = new StringBuilder("Win for ").append(this.player1Name);
-            else score = new StringBuilder("Win for ").append(this.player2Name);
-            return score.toString();
+        // All
+        if (isAll()) {
+            return scoreResults[m_score1] + "-" + "All";
         }
 
         // Normal game
         return scoreResults[m_score1] + "-" + scoreResults[m_score2];
     }
-    private boolean isAdvantageAndWin(){
-        return  m_score1 >= 4 || m_score2 >= 4;
+    private boolean isWin(int diffScore){
+        return (m_score1 >= 4 || m_score2 >= 4) && Math.abs(diffScore) >= 2;
+    }
+    private  boolean isAdvantage(int diffScore){
+        return  (m_score1 >= 4 || m_score2 >= 4) && Math.abs(diffScore) == 1;
     }
     private boolean isDeuce() {
         return m_score1 == m_score2 && m_score1 > 2;
