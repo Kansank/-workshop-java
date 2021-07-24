@@ -33,7 +33,7 @@ public class TennisGame1 {
         }
 
         // ???? Advantage and Win ????
-        if (m_score1 >= 4 || m_score2 >= 4) {
+        if (isAdvantageAndWin()) {
             StringBuilder score = new StringBuilder();
             int minusResult = m_score1 - m_score2;
             if (minusResult == 1) score = new StringBuilder("Advantage ").append(this.player1Name);
@@ -46,7 +46,9 @@ public class TennisGame1 {
         // Normal game
         return scoreResults[m_score1] + "-" + scoreResults[m_score2];
     }
-
+    private boolean isAdvantageAndWin(){
+        return  m_score1 >= 4 || m_score2 >= 4;
+    }
     private boolean isDeuce() {
         return m_score1 == m_score2 && m_score1 > 2;
     }
